@@ -1,2 +1,2 @@
 # GameOfLife_ThreeJS
-In this project I wanted to learn Three.js. I selected Game of Life and wanted to run it in the browser with a resolution of up to 4K. 
+I created this project for evaluating Three.js. What could be the performance of a Three.js powered Game of Life when doing little or no code optimization? What would be the maximum achievable framerate in a fullscreen browser with a resolution at 4K? How stable will this setup be or will it crash regularly?
