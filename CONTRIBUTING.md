@@ -1,4 +1,4 @@
-# Wwelcome
+# Welcome
 
 There are no special setup steps for development:
 
