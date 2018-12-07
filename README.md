@@ -1,5 +1,5 @@
 # What is GameOfLife_ThreeJS?
-GameOfLife_ThreeJS is a simple Javascript project to run Game of Life in every modern browser with WebGL support.
+GameOfLife_ThreeJS is a simple Javascript project to run Conways Game of Life in every modern browser with WebGL support.
 
 GameOfLife_ThreeJS uses Three.js to display a 2D point cloud in a 3D space. With the included TrackballControls.js the user can navigate around the 2D plane.
 
@@ -9,7 +9,7 @@ Here you can see [GameOfLife_ThreeJS in action](https://schellhorn.de/git-projec
 
 
 ## Why did I start this project?
-I created this project for evaluating Three.js. What could be the performance of a Three.js powered Game of Life when doing little or no code optimization? What would be the maximum achievable framerate in a fullscreen browser with a resolution at 4K? How stable will this setup be or will it crash regularly? - And: This is my first public code project :)
+I created this project for evaluating Three.js. What could be the performance of a Three.js powered Conways Game of Life when doing little or no code optimization? What would be the maximum achievable framerate in a fullscreen browser with a resolution at 4K? How stable will this setup be or will it crash regularly? - And: This is my first public code project :)
 
 
 ## Contribution
