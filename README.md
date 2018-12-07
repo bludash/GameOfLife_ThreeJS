@@ -5,6 +5,8 @@ GameOfLife_ThreeJS uses Three.js to display a 2D point cloud in a 3D space. With
 
 The current release does not include any special code optimizations due to time limitations. But everybody is welcome to contribute and accelerate the output framerate.
 
+Here you can see [GameOfLife_ThreeJS in action](https://schellhorn.de/git-projects/GameOfLife_ThreeJS/gameoflife.html)
+
 
 ## Why did I start this project?
 I created this project for evaluating Three.js. What could be the performance of a Three.js powered Game of Life when doing little or no code optimization? What would be the maximum achievable framerate in a fullscreen browser with a resolution at 4K? How stable will this setup be or will it crash regularly? - And: This is my first public code project :)
