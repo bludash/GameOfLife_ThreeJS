@@ -22,7 +22,7 @@
 				}
 			}
 
-			var worker = new Worker('worker-golcalc.js');
+			var worker = new Worker('js/worker-golcalc.js');
 
 			worker.addEventListener('message', function (event) {
 				message_actions[event.data.action](event.data.data)
