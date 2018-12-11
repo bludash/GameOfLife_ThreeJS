@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title>dash GOL.8</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="js/three.min.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/TrackballControls.js"></script>
+		<script>
+			var xcells = 1920; //algorithm tested up to 4K.
+			var ycells = 1080;
+			var fadeoutlook = true; //false = faster (x1.5)
+			
+			//Setting up webworker:
+			var message_actions = {
+				log: function(message) {
+					console.log( message );
+				}
+			}
+
+			var worker = new Worker('dothework.js');
+
+			worker.addEventListener('message', function (event) {
+				message_actions[event.data.action](event.data.data)
+			}, false);
+	
+			//webworker main data loop:
+			message_actions.datatodraw = function(delta) {
+				for (var i = 0, len = delta.length; i < len; ++i) 
+					mypreparedcolors[i] = delta[i];
+			}
+	
+			//Setting up Three.js:
+			var scene = new THREE.Scene();
+
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 10000 );
+			camera.position.set( xcells/2, ycells/2, 638 );
+
+			controls = new THREE.TrackballControls( camera );
+			controls.update();
+			controls.target.set( xcells/2, ycells/2, 0);
+
+			var renderer = new THREE.WebGLRenderer({ antialiasing: true });
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			//Setting up stats-view:
+			var stats = new Stats();
+			stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+			document.body.appendChild( stats.dom );
+			
+			//Build geometry buffer for pointcloud display:
+			var geometry = new THREE.BufferGeometry();
+			var positions = [];
+			var mypreparedcolors = new Float32Array(xcells * ycells *3);
+			var colorWhite = new THREE.Color(0xffffff);
+			var colorDark = new THREE.Color(0x000000);
+
+			for (y = 0; y < ycells; y++)
+				for (x = 0; x < xcells; x++) 
+					positions.push( x, y, 0 );
+			
+			geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+			geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( mypreparedcolors, 3 ) );
+			
+			var material = new THREE.PointsMaterial( { size: 5, sizeAttenuation: false, vertexColors: THREE.VertexColors } );
+			var points = new THREE.Points( geometry, material );
+			var pointscolorarray = points.geometry.attributes.color.array;
+
+			scene.add( points );
+			
+			//Start infinite loop with Game of Life in webworker:
+			worker.postMessage([xcells,ycells,fadeoutlook]);
+			
+			//Function for actual display and rendering:
+			var animate = function () {
+
+				requestAnimationFrame( animate );
+				
+				stats.begin();
+
+				//Repainting dead and living cells:
+				for (var i = 0, len = mypreparedcolors.length; i < len; ++i) 
+					pointscolorarray[i] = mypreparedcolors[i];
+
+				points.geometry.attributes.color.needsUpdate = true;
+				controls.update();
+				renderer.render( scene, camera );
+				
+				stats.end();
+
+			};
+
+			animate();
+		</script>
+	</body>
+</html>
