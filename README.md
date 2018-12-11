@@ -5,7 +5,7 @@ GameOfLife_ThreeJS uses Three.js to display a 2D point cloud in a 3D space. With
 
 The current release does not include any special code optimizations due to time limitations. But everybody is welcome to contribute and accelerate the output framerate.
 
-Here you can see [GameOfLife_ThreeJS in action](https://schellhorn.de/git-projects/GameOfLife_ThreeJS/gameoflife.html)
+Here you can see [GameOfLife_ThreeJS in action](https://schellhorn.de/git-projects/GameOfLife_ThreeJS)
 
 
 ## Why did I start this project?
