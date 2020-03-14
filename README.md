@@ -16,9 +16,9 @@ I created this project for evaluating Three.js. What could be the performance of
 
 ## Contribution
 
-- [@dashlab](mailto:daniel@schellhorn.de) The main author.
+- [@bludash](mailto:daniel@schellhorn.de) The main author.
 
 
 ## Questions
 
-Feel free to [contact me](mailto:daniel@schellhorn.de) or [create an issue](https://github.com/dashlab/GameOfLife_ThreeJS/issues/new)
+Feel free to [contact me](mailto:daniel@schellhorn.de) or [create an issue](https://github.com/bludash/GameOfLife_ThreeJS/issues/new)
